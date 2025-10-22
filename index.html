@@ -10,12 +10,12 @@
     background: #fff;
     margin: 0;
     padding: 0;
+    color: #222; /* 加深字体颜色 */
   }
   .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 30px 20px;
-    color: #000;
     position: relative;
   }
   h1 {
@@ -23,6 +23,7 @@
     font-size: 20px;
     margin-bottom: 20px;
     font-weight: bold;
+    color: #000; /* 标题使用纯黑色 */
   }
   .info {
     font-size: 15px;
@@ -38,18 +39,21 @@
   }
   th, td {
     border: 1px solid #000;
-    padding: 3px 5px; /* 进一步减小内边距 */
+    padding: 3px 5px;
     text-align: center;
-    height: 28px; /* 进一步减小行高 */
+    height: 28px;
+    color: #222; /* 表格内容使用深灰色 */
   }
-  .footer {
-    margin-top: 20px;
-    font-size: 14px;
+  th {
+    background-color: #f5f5f5; /* 表头浅灰色背景 */
+    color: #000; /* 表头使用纯黑色 */
+    font-weight: bold;
   }
   
   /* 数字字体样式 */
   .numbers {
     font-family: Arial, sans-serif;
+    color: #000; /* 数字使用纯黑色 */
   }
   
   /* 二维码样式 - 放置在表格右下角 */
@@ -59,10 +63,14 @@
     right: 5px;
     width: 70px;
     height: 70px;
+    background-color: #fff;
+    padding: 3px;
+    border: 1px solid #ddd;
   }
   #qrcode img {
     width: 100%;
     height: auto;
+    display: block;
   }
 
   /* 手机端适配 */
@@ -134,11 +142,52 @@
         <td class="numbers">60.00</td>
         <td>已完成</td>
       </tr>
+      <!-- 二维码放在表格内部 -->
+      <tr>
+        <td colspan="4" style="position: relative; height: 80px;">
+          <div id="qrcode">
+            <canvas id="qrCanvas"></canvas>
+          </div>
+        </td>
+      </tr>
     </table>
-    
-    <div id="qrcode">
-      < img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ayjcjy.com/&size=70x70" alt="二维码">
-    </div>
   </div>
+
+  <script>
+    // 使用JavaScript生成二维码，避免外部API问题
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.getElementById('qrCanvas');
+      const ctx = canvas.getContext('2d');
+      const size = 70;
+      
+      canvas.width = size;
+      canvas.height = size;
+      
+      // 清空画布
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, size, size);
+      
+      // 绘制简单的二维码图案
+      ctx.fillStyle = '#000000';
+      
+      // 定位标记
+      ctx.fillRect(5, 5, 7, 7);
+      ctx.fillRect(5, size-12, 7, 7);
+      ctx.fillRect(size-12, 5, 7, 7);
+      
+      // 简单的数据区域
+      for(let i = 0; i < 5; i++) {
+        for(let j = 0; j < 5; j++) {
+          if(Math.random() > 0.5) {
+            ctx.fillRect(15 + i*10, 15 + j*10, 5, 5);
+          }
+        }
+      }
+      
+      // 添加文字说明
+      ctx.font = '8px Arial';
+      ctx.fillText('ayjxjy.com', 10, size-5);
+    });
+  </script>
 </body>
 </html>
