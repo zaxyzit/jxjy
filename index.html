@@ -6,7 +6,7 @@
 <title>安阳市继续教育学习记录</title>
 <style>
   body {
-    font-family: "SimSun", "宋体", serif; /* 修改为宋体 */
+    font-family: "SimSun", "宋体", serif;
     background: #fff;
     margin: 0;
     padding: 0;
@@ -14,8 +14,9 @@
   .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 30px 20px;
     color: #000;
+    position: relative;
   }
   h1 {
     text-align: center;
@@ -23,40 +24,44 @@
     margin-bottom: 20px;
     font-weight: bold;
   }
-  h2 {
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 25px;
-  }
   .info {
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     line-height: 1.6;
   }
   table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 14px;
   }
   th, td {
     border: 1px solid #000;
-    padding: 6px;
+    padding: 4px 6px; /* 减小内边距，使行高更紧凑 */
     text-align: center;
+    height: 32px; /* 固定行高 */
   }
   .footer {
     margin-top: 20px;
     font-size: 14px;
   }
+  
+  /* 数字字体样式 */
+  .numbers {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* 二维码样式调整 */
   #qrcode {
     position: absolute;
     bottom: 20px;
     right: 20px;
+    width: 100px;
+    height: 100px;
   }
-
-  /* 添加数字字体样式 */
-  .numbers {
-    font-family: Arial, sans-serif; /* 数字使用Arial字体 */
+  #qrcode img {
+    width: 100%;
+    height: auto;
   }
 
   /* 手机端适配 */
@@ -65,10 +70,16 @@
       padding: 20px 10px;
     }
     table, th, td {
-      font-size: 14px;
+      font-size: 13px;
     }
-    h1, h2 {
+    h1 {
       font-size: 17px;
+    }
+    #qrcode {
+      width: 80px;
+      height: 80px;
+      bottom: 10px;
+      right: 10px;
     }
   }
 </style>
@@ -121,11 +132,10 @@
         <td>已完成</td>
       </tr>
     </table>
-
     
     <div id="qrcode">
-      < img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ayjcjy.com/&size=120x120" alt="二维码">
+      < img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ayjcjy.com/&size=100x100" alt="二维码">
     </div>
-
+  </div>
 </body>
 </html>
