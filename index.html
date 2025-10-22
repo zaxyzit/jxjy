@@ -123,18 +123,10 @@
       <p>2025/10/21 10:53 打印学习完成证明 - 安阳继续教育监管平台</p>
     </div>
 
-    <div id="qrcode"></div>
-  </div>
+    <div id="qrcode" style="position:absolute;bottom:20px;right:20px;">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ayjcjy.com/&size=120x120" alt="二维码">
+</div>
 
-  <!-- 引入二维码生成库 -->
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"></script>
-  <script>
-    new QRCode(document.getElementById("qrcode"), {
-      text: "https://www.ayjcjy.com/",
-      width: 90,
-      height: 90,
-      correctLevel: QRCode.CorrectLevel.H
-    });
-  </script>
 </body>
 </html>
+
